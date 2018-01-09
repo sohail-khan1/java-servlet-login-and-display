@@ -7,9 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class LoginDao {
-	
+
 	private static Connection connection = null;
-    
+
 	public static boolean validate(String name, String pass) {
         boolean status = false;
         Connection conn = null;
@@ -46,7 +46,7 @@ public class LoginDao {
                     e.printStackTrace();
                 }
             }
-            
+
             if (pst != null) {
                 try {
                     pst.close();
@@ -54,7 +54,7 @@ public class LoginDao {
                     e.printStackTrace();
                 }
             }
-            
+
             if (conn != null) {
                 try {
                     conn.close();
@@ -66,46 +66,45 @@ public class LoginDao {
 
         return status;
     }
-	
+
 	// Create permanent connection
 	public static Connection getConnection() {
         if (connection != null)
             return connection;
         else {
             try {
-                
+
             	String url = "jdbc:mysql://localhost/";
                 String dbName = "COMPOSITEAPPS";
                 String driver = "com.mysql.jdbc.Driver";
                 String userName = "mysqluser";
                 String password = "mysqlpassword";
-                
+
                 Class.forName(driver);
                 connection = DriverManager.getConnection(url + dbName, userName, password);
-            
+
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {
                 e.printStackTrace();
-            } 
+            }
             return connection;
         }
     }
-	
+
 	public static ArrayList<Employee> getAllEmployees() {
-	     
-		 connection = LoginDao.getConnection();   
+
+		 connection = LoginDao.getConnection();
 	     ArrayList<Employee> employeeList = new ArrayList<Employee>();
 	     Statement statement = null;
 	     ResultSet rs = null;
-	        
+
 	        try {
 	            statement = connection.createStatement();
 	            rs = statement.executeQuery("SELECT * FROM EMPLOYEES LIMIT 100");
 
 	            while(rs.next()) {
-	             
-	            	Employee empl = new Employee();             
+	            	Employee empl = new Employee();
 	                empl.setEmployeeID(rs.getInt("EMPLOYEE_ID"));
 	                empl.setName(rs.getString("NAME"));
 	                empl.setPhone(rs.getString("PHONE_NUMBER"));
@@ -114,12 +113,12 @@ public class LoginDao {
 	                empl.setPassword(rs.getString("PASSWORD"));
 	                employeeList.add(empl);
 	            }
-	        } 
-	        
+	        }
+
 	        catch (SQLException e) {
 	            e.printStackTrace();
 	        }
-	        
+
 	        finally {
 	        	if (rs != null) {
 	                try {
@@ -128,7 +127,7 @@ public class LoginDao {
 	                    e.printStackTrace();
 	                }
 	            }
-	            
+
 	            if (statement != null) {
 	                try {
 	                	statement.close();
@@ -136,7 +135,7 @@ public class LoginDao {
 	                	e.printStackTrace();
 	                }
 	            }
-	            
+
 	        }
 
 	        return employeeList;
