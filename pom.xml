@@ -2,8 +2,8 @@
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.compositeapps</groupId>
-  <artifactId>logindemo</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>idqlogindemo</artifactId>
+  <version>1.0.0</version>
   <packaging>war</packaging>
   
   <dependencies>
@@ -40,6 +40,22 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 			<artifactId>gson</artifactId>
 			<version>2.6.2</version>
 		</dependency>
+		<!-- OAuth 2.0 library  -->
+        <dependency>
+			<groupId>org.apache.oltu.oauth2</groupId>
+			<artifactId>org.apache.oltu.oauth2.client</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+        <dependency>
+			<groupId>org.apache.oltu.oauth2</groupId>
+			<artifactId>org.apache.oltu.oauth2.common</artifactId>
+			<version>1.0.1</version>
+		</dependency>	
+        <dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160807</version>
+		</dependency>		
     </dependencies>
 
     <build>
