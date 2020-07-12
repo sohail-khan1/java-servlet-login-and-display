@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet(urlPatterns = "/login.do")
-public class LoginServlet extends HttpServlet{  
+public class LoginServlet extends HttpServlet{
 
     private static final long serialVersionUID = 1L;
 
 
-    protected void doGet(HttpServletRequest request,HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request,HttpServletResponse response)
     		throws ServletException, IOException {
         		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
     }
@@ -31,14 +31,15 @@ public class LoginServlet extends HttpServlet{
 
 
         if(LoginDao.validate(n, p)){
-        	
+
 //            RequestDispatcher rd = request.getRequestDispatcher("todo.jsp");
 //            rd.forward(request,response);
         	request.getSession().setAttribute("name",n);
-        	response.sendRedirect("/homepage.do");
+		String originalUrl = request.getRequestURL().toString();
+		String baseUrl = originalUrl.substring(0, originalUrl.length() - request.getRequestURI().length()) + request.getContextPath();
+		response.sendRedirect(baseUrl + "/homepage.do");
         }
         else{
-        	
             request.setAttribute("errorMessage", "Invalid Credentials!");
             request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(
                     request, response);

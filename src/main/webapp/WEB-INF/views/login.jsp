@@ -27,7 +27,7 @@
 		          <h1 class="text-center">COMPOSITE APPS</h1>
 		      </div>
 		      <div class="modal-body">
-		          <form class="form col-md-12 center-block" action="/login.do" method="POST">
+		          <form class="form col-md-12 center-block" action="${pageContext.request.contextPath}/login.do" method="POST">
 		            <div class="form-group">
 		              <input type="text" class="form-control input-lg" placeholder="Username" name="name">
 		            </div>
@@ -37,6 +37,9 @@
 		            <div class="form-group">
 		              <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button>
 		            </div>
+		          </form>
+		          <form class="form col-md-12 center-block" action="${pageContext.request.contextPath}/idqlogin" method="GET">
+		              <button class="btn btn-primary btn-lg btn-block" type="submit">idQ Sign In</button>
 		          </form>
 		      </div>
 		      <div class="modal-footer">
