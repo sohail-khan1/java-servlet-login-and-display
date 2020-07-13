@@ -21,7 +21,7 @@ Installation
 
 OAuth 2.0 Login Demo
 ------------
-+ Access the link "http://localhost:8080" or "http://your-web-hostname:8080" for OAuth 2.0 login
++ Access the link "https://localhost:8443" or "https://your-web-hostname:8443" for OAuth 2.0 login
 + Click idQ Sign In
 + You are redirected to idQ TaaS login screen
 + Scan idQ QR code using your idQ Trusted Device

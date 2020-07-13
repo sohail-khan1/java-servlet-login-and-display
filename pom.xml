@@ -79,6 +79,10 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
                     <configuration>
                         <path>/</path>
                         <contextReloadable>true</contextReloadable>
+                        <port>8080</port>
+                        <httpsPort>8443</httpsPort>
+                        <keystoreFile>certificates/keystore.jks</keystoreFile>
+                        <keystorePass>health</keystorePass>
                     </configuration>
                 </plugin>
             </plugins>
